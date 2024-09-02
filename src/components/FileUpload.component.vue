@@ -19,6 +19,7 @@ interface IFileUploadProps {
   successClass?: string
   errorClass?: string
   inputCssClass?: string
+  validatorRowCssClass?: string
 }
 
 const props = withDefaults(defineProps<IFileUploadProps>(), {
@@ -96,7 +97,7 @@ defineExpose<{
   <div className="max-w-96 space-y-2">
     <FileInputComponent
       ref="refFileInputComp"
-      :id="`${props.id}-input`"
+      :id="props.id"
       :disabled="props.disabled"
       :model="state.fileInfo"
       :inputCssClass="props.inputCssClass"
@@ -106,6 +107,7 @@ defineExpose<{
     <FileValidatorComponent
       :model="state.fileInfo"
       :id="`${props.id}-validator`"
+      :validatorRowCssClass="props.validatorRowCssClass"
       :validatorItems="state.validatorItems"
       :showOnlyErrors="props.showOnlyErrors"
       :roundedCorners="props.roundedCorners"

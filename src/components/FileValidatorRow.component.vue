@@ -6,20 +6,22 @@ interface IProps {
   id?: string
   index: number
   totItemsCount: number
-  successClass?: string
-  errorClass?: string
   roundedCorners?: boolean
   model: IFileValidatorItem
+  validatorRowCssClass?: string
+  successClass?: string
+  errorClass?: string
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   id: 'not-set',
   roundedCorners: false,
   successClass: 'success bg-success content-success',
-  errorClass: 'error bg-danger content-danger'
+  errorClass: 'error bg-danger content-danger',
+  validatorRowCssClass: ''
 })
 
-const cssClass = computed(() => {
+const wrapperCssClass = computed(() => {
   const { model } = props
   const hasError = model?.hasError || false
   //const isFirst = model.index === 0
@@ -27,6 +29,8 @@ const cssClass = computed(() => {
 
   //const result = ['file-validator-item px-4 py-2 flex items-center text-white']
   const result = ['file-validator-item']
+
+  result.push(`${props.validatorRowCssClass || ''}`)
 
   // if (props.roundedCorners) {
   //   if (isFirst) {
@@ -50,10 +54,11 @@ const cssClass = computed(() => {
 // <icon class="h-4 w-4 flex-none" aria-hidden="true" :title="validationIcon" />
 </script>
 <template>
-  <div :class="cssClass" :title="model.value" :data-testid="props.id">
-    <span class="property-name flex-none w-20">{{ model.name }}</span>
+  <div :class="wrapperCssClass" :title="model.value" :id="props.id" :data-testid="props.id">
+    <span :class="`property-name`" style="flex: none; width: 5rem">{{ model.name }}</span>
     <span
-      :class="`property-value flex-initial ${model.hasError ? '' : 'overflow-hidden overflow-ellipsis whitespace-nowrap'}`"
+      :class="`property-value ${model.hasError ? 'error' : ''}`"
+      :style="`flex: 0 1 auto;${model.hasError ? '' : 'overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'}`"
     >
       {{ model.displayValue }}
     </span>

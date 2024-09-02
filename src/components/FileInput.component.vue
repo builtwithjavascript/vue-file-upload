@@ -8,6 +8,7 @@ interface IFileInputProps {
   model: IFileInfo
   cssClass?: string
   inputCssClass?: string
+  validator?: string
 }
 
 export default defineComponent({
@@ -30,6 +31,11 @@ const wrapperCssClasses = computed(() => {
   const classes: string[] = [
     //'cursor-pointer w-full flex flex-col space-y-2 p-2 overflow-hidden overflow-ellipsis whitespace-nowrap'
   ]
+
+  if (props.disabled) {
+    classes.push('disabled')
+  }
+
   if (props.cssClass) {
     classes.push(props.cssClass)
   }
@@ -63,10 +69,17 @@ const onInputFileChange = (ev: any) => {
 }
 </script>
 <template>
-  <label :class="wrapperCssClasses" :id="props.id" :data-testid="props.id">
+  <label
+    :class="wrapperCssClasses"
+    :id="`${props.id}-input-wrapper`"
+    :data-testid="props.id"
+    :aria-disabled="props.disabled"
+    :for="`${props.id}-input`"
+  >
     <input
       ref="refInputFile"
       type="file"
+      :id="`${props.id}-input`"
       :disabled="props.disabled"
       :class="props.inputCssClass || ''"
       @change="onInputFileChange"

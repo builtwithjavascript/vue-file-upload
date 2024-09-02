@@ -11,13 +11,15 @@ interface IProps {
   showOnlyErrors?: boolean
   roundedCorners?: boolean
   validatorItems: IFileValidatorItem[]
+  validatorRowCssClass?: string
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   showOnlyErrors: true,
   roundedCorners: false,
   successClass: 'success bg-success content-success',
-  errorClass: 'error bg-danger content-danger'
+  errorClass: 'error bg-danger content-danger',
+  validatorRowCssClass: ''
 })
 
 const computedValidatorItems = computed(() => {
@@ -54,6 +56,7 @@ const topDivCssClasses = computed((): string => {
         :totItemsCount="computedValidatorItems.length"
         :roundedCorners="roundedCorners"
         :model="item"
+        :validatorRowCssClass="props.validatorRowCssClass"
       />
     </div>
   </div>
