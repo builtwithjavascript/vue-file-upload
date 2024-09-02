@@ -1,0 +1,72 @@
+{
+  "name": "@builtwithjavascript/vue-file-upload",
+  "version": "1.0.3",
+  "description": "A Vue file upload component with validation, unstyled",
+  "author": "Damiano Fusco",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/builtwithjavascript/vue-file-upload.git"
+  },
+  "bugs": {
+    "url": "https://github.com/builtwithjavascript/vue-file-upload/issues"
+  },
+  "homepage": "https://github.com/builtwithjavascript/vue-file-upload#readme",
+  "keywords": [
+    "component, libraries, scripts, javascript, large scale apps, vue, react, svelte, nuxt, next, node"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build-types": "vue-tsc --declaration --emitDeclarationOnly --outDir dist",
+    "build": "vite build && npm run build-types",
+    "pub": "npm publish --access public",
+    "test": "TESTING=true vitest run",
+    "test-watch": "TESTING=true vitest watch",
+    "pretty": "prettier -w \"./src/**/*.(ts|vue)\"",
+    "version-patch": "npm run pretty && npm version patch -m \"Patch version\"",
+    "preversion": "npm run test",
+    "version": "npm run build",
+    "postversion": "git push"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged \"./src/**/*.(ts|vue)\""
+    }
+  },
+  "devDependencies": {
+    "@builtwithjavascript/file-input-validator": "^1.0.3",
+    "@testing-library/user-event": "^14.5.2",
+    "@testing-library/vue": "^8.0.3",
+    "@types/node": "^20.12.7",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
+    "prettier": "^3.2.5",
+    "pretty-quick": "^4.0.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10",
+    "vitest": "^1.5.2",
+    "vitest-preview": "^0.0.1",
+    "vue": "^3.4.24",
+    "vue-tsc": "^2.0.14"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/vue-file-upload.es.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/vue-file-upload.umd.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/vue-file-upload.umd.js",
+  "module": "./dist/vue-file-upload.es.js"
+}
