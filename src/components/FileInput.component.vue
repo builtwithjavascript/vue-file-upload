@@ -4,6 +4,7 @@ import type { IFileInfo } from '@builtwithjavascript/file-input-validator'
 
 interface IFileInputProps {
   id: string
+  disabled?: boolean
   model: IFileInfo
   cssClass?: string
   inputCssClass?: string
@@ -15,6 +16,7 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 const props = withDefaults(defineProps<IFileInputProps>(), {
+  disabled: false,
   cssClass: ''
 })
 
@@ -61,10 +63,11 @@ const onInputFileChange = (ev: any) => {
 }
 </script>
 <template>
-  <label :class="wrapperCssClasses" :id="props.id">
+  <label :class="wrapperCssClasses" :id="props.id" :data-testid="props.id">
     <input
       ref="refInputFile"
       type="file"
+      :disabled="props.disabled"
       :class="props.inputCssClass || ''"
       @change="onInputFileChange"
     />

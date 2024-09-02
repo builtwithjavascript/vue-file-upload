@@ -37,7 +37,7 @@ const topDivCssClasses = computed((): string => {
 </script>
 
 <template>
-  <div v-show="model.displayName.length > 0" class="file-validator">
+  <div v-show="model.displayName.length > 0" :data-testid="props.id" class="file-validator">
     <div v-show="model.message" :class="topDivCssClasses">
       <span style="">{{ model.isValid ? 'File:' : 'Error:' }}</span>
       <span class="" :title="model.isValid ? model.displayName : model.message">
@@ -48,6 +48,7 @@ const topDivCssClasses = computed((): string => {
     <div v-if="!model.message" class="file-validator-inner">
       <FileValidatorRowComponent
         v-for="(item, index) in computedValidatorItems"
+        :id="`${props.id}-file-validator-row_${item.key}`"
         :key="`file-validator-row-${item.key}`"
         :index="index"
         :totItemsCount="computedValidatorItems.length"

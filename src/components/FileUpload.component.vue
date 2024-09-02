@@ -9,8 +9,9 @@ import type {
   IFileValidatorOptions
 } from '@builtwithjavascript/file-input-validator'
 
-type IFileUploadProps = {
+interface IFileUploadProps {
   id: string
+  disabled?: boolean
   uploadLabel: string
   validatorOptions?: IFileValidatorOptions
   showOnlyErrors?: boolean
@@ -21,6 +22,7 @@ type IFileUploadProps = {
 }
 
 const props = withDefaults(defineProps<IFileUploadProps>(), {
+  disabled: false,
   showOnlyErrors: false,
   roundedCorners: false,
   successClass: 'success bg-green-600',
@@ -95,6 +97,7 @@ defineExpose<{
     <FileInputComponent
       ref="refFileInputComp"
       :id="`${props.id}-input`"
+      :disabled="props.disabled"
       :model="state.fileInfo"
       :inputCssClass="props.inputCssClass"
       @changed="onFileInputChanged"
