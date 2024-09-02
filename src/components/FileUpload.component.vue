@@ -30,6 +30,7 @@ const props = withDefaults(defineProps<IFileUploadProps>(), {
 const emits = defineEmits<{
   (e: 'fileSelectionChanged', model: IFileInfo): any
   (e: 'uploadClicked', model: IFileInfo): any
+  (e: 'update:valid', value: boolean): any
 }>()
 
 const refFileInputComp = ref<InstanceType<typeof FileInputComponent> | null>()
@@ -54,7 +55,7 @@ const state = reactive<{
   validatorItems: []
 })
 
-const uploadDisabled = computed(() => {
+const isInvalid = computed(() => {
   if (!state.fileInfo.file) {
     return true
   }
@@ -67,10 +68,13 @@ const fileValidator = useFileInputValidator(props.validatorOptions)
 const onFileInputChanged = (updatedModel: IFileInfo) => {
   state.fileInfo = updatedModel
   state.validatorItems = fileValidator.validateFile(state.fileInfo)
+  console.log('___ fileSelectionChanged', state.fileInfo, state.validatorItems)
   emits('fileSelectionChanged', state.fileInfo)
+  emits('update:valid', isInvalid.value)
 }
 
 const onUploadClick = async () => {
+  console.log('___ onUploadClick', state.fileInfo?.file)
   emits('uploadClicked', state.fileInfo)
 }
 
@@ -92,7 +96,7 @@ defineExpose<{
       ref="refFileInputComp"
       :id="`${props.id}-input`"
       :model="state.fileInfo"
-      :cssClass="props.inputCssClass"
+      :inputCssClass="props.inputCssClass"
       @changed="onFileInputChanged"
     />
 
@@ -104,12 +108,14 @@ defineExpose<{
       :roundedCorners="props.roundedCorners"
     />
 
-    <button
-      @click="onUploadClick"
-      :disabled="uploadDisabled"
-      :class="`p-2 rounded-md ${uploadDisabled ? 'bg-gray-400' : 'bg-blue-500'} color-white`"
-    >
-      {{ props.uploadLabel }}
-    </button>
+    <slot>
+      <button
+        @click="onUploadClick"
+        :disabled="isInvalid"
+        :class="`p-2 rounded-md ${isInvalid ? 'bg-gray-400' : 'bg-blue-500'} color-white`"
+      >
+        {{ props.uploadLabel }}
+      </button>
+    </slot>
   </div>
 </template>

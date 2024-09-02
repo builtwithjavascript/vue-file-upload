@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { IFileValidatorItem } from '@builtwithjavascript/file-input-validator'
 
-type IProps = {
+interface IProps {
   id?: string
   index: number
   totItemsCount: number

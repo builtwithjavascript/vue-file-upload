@@ -2,10 +2,11 @@
 import { defineComponent, ref, computed } from 'vue'
 import type { IFileInfo } from '@builtwithjavascript/file-input-validator'
 
-type IFileInputProps = {
+interface IFileInputProps {
   id: string
   model: IFileInfo
   cssClass?: string
+  inputCssClass?: string
 }
 
 export default defineComponent({
@@ -23,7 +24,7 @@ const emits = defineEmits<{
 
 const refInputFile = ref<HTMLInputElement | null>()
 
-const cssClasses = computed(() => {
+const wrapperCssClasses = computed(() => {
   const classes: string[] = [
     //'cursor-pointer w-full flex flex-col space-y-2 p-2 overflow-hidden overflow-ellipsis whitespace-nowrap'
   ]
@@ -60,7 +61,12 @@ const onInputFileChange = (ev: any) => {
 }
 </script>
 <template>
-  <label :class="cssClasses" :id="props.id">
-    <input ref="refInputFile" type="file" @change="onInputFileChange" />
+  <label :class="wrapperCssClasses" :id="props.id">
+    <input
+      ref="refInputFile"
+      type="file"
+      :class="props.inputCssClass || ''"
+      @change="onInputFileChange"
+    />
   </label>
 </template>

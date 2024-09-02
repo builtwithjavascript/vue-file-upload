@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import FileValidatorRowComponent from './FileValidatorRow.component.vue'
 import type { IFileInfo, IFileValidatorItem } from '@builtwithjavascript/file-input-validator'
 
-type IProps = {
+interface IProps {
   id: string
   model: IFileInfo
   successClass?: string
@@ -44,8 +44,8 @@ const topDivCssClasses = computed((): string => {
         {{ model.isValid ? model.displayName : model.message }}
       </span>
     </div>
-
-    <div v-show="!model.message" class="file-validator-inner">
+    <!-- do not use v-show here, but rather v-if to make sure it re-render appropriately -->
+    <div v-if="!model.message" class="file-validator-inner">
       <FileValidatorRowComponent
         v-for="(item, index) in computedValidatorItems"
         :key="`file-validator-row-${item.key}`"
