@@ -6,11 +6,11 @@ import type { IFileInfo, IFileValidatorItem } from '@builtwithjavascript/file-in
 interface IProps {
   id: string
   model: IFileInfo
-  successClass?: string
-  errorClass?: string
   showOnlyErrors?: boolean
   roundedCorners?: boolean
   validatorItems: IFileValidatorItem[]
+  successClass?: string
+  errorClass?: string
   validatorRowCssClass?: string
 }
 
@@ -56,6 +56,8 @@ const topDivCssClasses = computed((): string => {
         :totItemsCount="computedValidatorItems.length"
         :roundedCorners="roundedCorners"
         :model="item"
+        :successClass="props.successClass"
+        :errorClass="props.errorClass"
         :validatorRowCssClass="props.validatorRowCssClass"
       />
     </div>

@@ -26,8 +26,8 @@ const props = withDefaults(defineProps<IFileUploadProps>(), {
   disabled: false,
   showOnlyErrors: false,
   roundedCorners: false,
-  successClass: 'success bg-green-600',
-  errorClass: 'error bg-red-600'
+  successClass: 'success', // 'bg-none text-success border-success',
+  errorClass: 'error' // bg-none text-danger border border-danger',
 })
 
 const emits = defineEmits<{
@@ -101,16 +101,20 @@ defineExpose<{
       :disabled="props.disabled"
       :model="state.fileInfo"
       :inputCssClass="props.inputCssClass"
+      :successClass="props.successClass"
+      :errorClass="props.errorClass"
       @changed="onFileInputChanged"
     />
 
     <FileValidatorComponent
       :model="state.fileInfo"
       :id="`${props.id}-validator`"
-      :validatorRowCssClass="props.validatorRowCssClass"
       :validatorItems="state.validatorItems"
       :showOnlyErrors="props.showOnlyErrors"
       :roundedCorners="props.roundedCorners"
+      :successClass="props.successClass"
+      :errorClass="props.errorClass"
+      :validatorRowCssClass="props.validatorRowCssClass"
     />
 
     <slot>

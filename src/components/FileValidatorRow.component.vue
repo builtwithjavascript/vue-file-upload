@@ -16,8 +16,8 @@ interface IProps {
 const props = withDefaults(defineProps<IProps>(), {
   id: 'not-set',
   roundedCorners: false,
-  successClass: 'success bg-success content-success',
-  errorClass: 'error bg-danger content-danger',
+  successClass: 'success', //'bg-success content-success',
+  errorClass: 'error', // 'bg-danger content-danger',
   validatorRowCssClass: ''
 })
 
