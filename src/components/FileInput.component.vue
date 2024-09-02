@@ -6,9 +6,9 @@ interface IFileInputProps {
   id: string
   disabled?: boolean
   model: IFileInfo
-  cssClass?: string
-  inputCssClass?: string
   validator?: string
+  inputWrapperCssClass?: string
+  inputCssClass?: string
 }
 
 export default defineComponent({
@@ -18,7 +18,8 @@ export default defineComponent({
 <script setup lang="ts">
 const props = withDefaults(defineProps<IFileInputProps>(), {
   disabled: false,
-  cssClass: ''
+  inputWrapperCssClass: '',
+  inputCssClass: ''
 })
 
 const emits = defineEmits<{
@@ -36,9 +37,7 @@ const wrapperCssClasses = computed(() => {
     classes.push('disabled')
   }
 
-  if (props.cssClass) {
-    classes.push(props.cssClass)
-  }
+  classes.push(`${props.inputWrapperCssClass}`)
   return classes.join(' ').trim()
 })
 

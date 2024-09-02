@@ -19,6 +19,7 @@ interface IFileUploadProps {
   successClass?: string
   errorClass?: string
   inputCssClass?: string
+  inputWrapperCssClass?: string
   validatorRowCssClass?: string
 }
 
@@ -27,7 +28,8 @@ const props = withDefaults(defineProps<IFileUploadProps>(), {
   showOnlyErrors: false,
   roundedCorners: false,
   successClass: 'success', // 'bg-none text-success border-success',
-  errorClass: 'error' // bg-none text-danger border border-danger',
+  errorClass: 'error', // bg-none text-danger border border-danger',
+  inputWrapperCssClass: ''
 })
 
 const emits = defineEmits<{
@@ -100,6 +102,7 @@ defineExpose<{
       :id="props.id"
       :disabled="props.disabled"
       :model="state.fileInfo"
+      :inputWrapperCssClass="props.inputWrapperCssClass"
       :inputCssClass="props.inputCssClass"
       :successClass="props.successClass"
       :errorClass="props.errorClass"
