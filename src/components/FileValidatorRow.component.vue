@@ -19,10 +19,10 @@ const props = withDefaults(defineProps<IProps>(), {
 })
 
 const cssClass = computed(() => {
-  const { model, index, totItemsCount } = props
+  const { model } = props
   const hasError = model?.hasError || false
-  //const isFirst = index === 0
-  //const isLast = index === totItemsCount - 1
+  //const isFirst = model.index === 0
+  //const isLast = index === model.totItemsCount - 1
 
   //const result = ['file-validator-item px-4 py-2 flex items-center text-white']
   const result = ['file-validator-item']

@@ -28,6 +28,7 @@ const props = withDefaults(defineProps<IFileUploadProps>(), {
 })
 
 const emits = defineEmits<{
+  (e: 'fileSelectionChanged', model: IFileInfo): any
   (e: 'uploadClicked', model: IFileInfo): any
 }>()
 
@@ -66,6 +67,7 @@ const fileValidator = useFileInputValidator(props.validatorOptions)
 const onFileInputChanged = (updatedModel: IFileInfo) => {
   state.fileInfo = updatedModel
   state.validatorItems = fileValidator.validateFile(state.fileInfo)
+  emits('fileSelectionChanged', state.fileInfo)
 }
 
 const onUploadClick = async () => {
