@@ -44,7 +44,7 @@ describe('FileValidatorRow.component: rendering', () => {
     expect(element).not.toBeNull()
     //expect(element.innerHTML).toContain('This is a value.csv')
     expect(element.innerHTML).toEqual(
-      '<span class="property-name flex-none w-20">Name</span><span class="property-value flex-initial overflow-hidden overflow-ellipsis whitespace-nowrap">This is a value.csv</span>'
+      '<span class="property-name" style="flex: 0 0 auto; width: 5rem;">Name</span><span class="property-value" style="flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">This is a value.csv</span>'
     )
   })
 })

@@ -1,6 +1,6 @@
 {
   "name": "@builtwithjavascript/vue-file-upload",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A Vue file upload component with validation, unstyled",
   "author": "Damiano Fusco",
   "license": "MIT",

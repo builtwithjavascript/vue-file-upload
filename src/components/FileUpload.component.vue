@@ -104,8 +104,6 @@ defineExpose<{
       :model="state.fileInfo"
       :inputWrapperCssClass="props.inputWrapperCssClass"
       :inputCssClass="props.inputCssClass"
-      :successClass="props.successClass"
-      :errorClass="props.errorClass"
       @changed="onFileInputChanged"
     />
 
