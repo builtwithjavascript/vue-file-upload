@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "dev": "vite",
+    "vitest-preview": "vitest-preview",
     "build-types": "vue-tsc --declaration --emitDeclarationOnly --outDir dist",
     "build": "npm run pretty; vite build && npm run build-types",
     "pub": "npm publish --access public",
@@ -40,6 +41,7 @@
     "typescript": "^5.9.2",
     "vite": "^7.1.5",
     "vitest": "^3.2.4",
+    "vitest-preview": "^0.0.1",
     "vue": "^3.5.21",
     "vue-tsc": "^3.0.7"
   },

@@ -3,6 +3,7 @@
 // import references to what we need from our test-utils:
 import { render, screen } from '../../test-utils'
 import { describe, it, expect } from 'vitest'
+import { debug } from 'vitest-preview'
 
 // import model references
 import type { IFileValidatorItem } from '@builtwithjavascript/file-input-validator'
@@ -34,7 +35,7 @@ describe('FileValidatorRow.component: rendering', () => {
       props
     })
 
-    // debug()
+    debug()
 
     // get element reference by testid
     const element = screen.getByTestId(props.id)
