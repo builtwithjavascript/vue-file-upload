@@ -3,7 +3,6 @@
 // import references to what we need from our test-utils:
 import { render, screen } from '../../test-utils'
 import { describe, it, expect } from 'vitest'
-import { debug } from 'vitest-preview'
 
 // import model references
 import type { IFileValidatorItem } from '@builtwithjavascript/file-input-validator'
@@ -35,7 +34,7 @@ describe('FileValidatorRow.component: rendering', () => {
       props
     })
 
-    debug()
+    // debug()
 
     // get element reference by testid
     const element = screen.getByTestId(props.id)
@@ -44,7 +43,7 @@ describe('FileValidatorRow.component: rendering', () => {
     expect(element).not.toBeNull()
     //expect(element.innerHTML).toContain('This is a value.csv')
     expect(element.innerHTML).toEqual(
-      '<span class="property-name" style="flex: 0 0 auto; width: 5rem;">Name</span><span class="property-value" style="flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">This is a value.csv</span>'
+      '<span class="property-name" style="flex: 0 0 auto; width: 5rem;">Name</span><span class="property-value" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">This is a value.csv</span>'
     )
   })
 })
