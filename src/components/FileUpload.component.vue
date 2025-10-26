@@ -96,7 +96,7 @@ defineExpose<{
 </script>
 
 <template>
-  <div className="max-w-96 space-y-2">
+  <div className="w-full space-y-2">
     <FileInputComponent
       ref="refFileInputComp"
       :id="props.id"
