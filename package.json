@@ -1,6 +1,6 @@
 {
   "name": "@builtwithjavascript/vue-file-upload",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A Vue file upload component with validation, unstyled",
   "author": "Damiano Fusco",
   "license": "MIT",
@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "vite",
     "vitest-preview": "vitest-preview",
-    "build-types": "vue-tsc --declaration --emitDeclarationOnly --outDir dist",
+    "build-types": "vue-tsc --declaration --emitDeclarationOnly -p tsconfig.dts.json",
     "build": "npm run pretty; vite build && npm run build-types",
     "pub": "npm run build; npm publish --access public --otp=",
     "test": "TESTING=true vitest run",
@@ -50,14 +50,9 @@
   ],
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/vue-file-upload.es.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/vue-file-upload.umd.js"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/vue-file-upload.es.js",
+      "require": "./dist/vue-file-upload.umd.js"
     }
   },
   "types": "./dist/index.d.ts",
