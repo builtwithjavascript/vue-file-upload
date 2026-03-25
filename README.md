@@ -15,9 +15,6 @@ https://www.npmjs.com/package/@builtwithjavascript/vue-file-upload-tailwind
 ## External Dependencies
 - Vue
 
-## Other Dependencies
-- @builtwithjavascript/file-input-validator
-
 ## Install
 ```
 npm i -D @builtwithjavascript/vue-file-upload
@@ -80,3 +77,6 @@ const reset = () => {
 ```
 
 NOTE: if you pass `showOnlyErrors` true, then only the validator items that fail will be displayed.
+
+### Dev Dependencies
+@builtwithjavascript/file-input-validator @testing-library/user-event @testing-library/vue @types/node @vitejs/plugin-vue jsdom prettier typescript vite vitest vitest-preview vue vue-tsc

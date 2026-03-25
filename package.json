@@ -1,6 +1,6 @@
 {
   "name": "@builtwithjavascript/vue-file-upload",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A Vue file upload component with validation, unstyled",
   "author": "Damiano Fusco",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "vitest-preview": "vitest-preview",
     "build-types": "vue-tsc --declaration --emitDeclarationOnly --outDir dist",
     "build": "npm run pretty; vite build && npm run build-types",
-    "pub": "npm publish --access public",
+    "pub": "npm run build; npm publish --access public --otp=",
     "test": "TESTING=true vitest run",
     "test-watch": "TESTING=true vitest watch",
     "pretty": "prettier -w \"./src/**/*.(ts|vue)\"",
@@ -31,19 +31,19 @@
     "postversion": "git push"
   },
   "devDependencies": {
-    "@builtwithjavascript/file-input-validator": "^1.0.7",
+    "@builtwithjavascript/file-input-validator": "^1.0.9",
     "@testing-library/user-event": "^14.6.1",
     "@testing-library/vue": "^8.1.0",
-    "@types/node": "^24.4.0",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "jsdom": "^27.0.0",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.5",
-    "vitest": "^3.2.4",
-    "vitest-preview": "^0.0.1",
-    "vue": "^3.5.21",
-    "vue-tsc": "^3.0.7"
+    "@types/node": "^25.5.0",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "jsdom": "^29.0.1",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.2",
+    "vitest": "^4.1.1",
+    "vitest-preview": "^0.0.3",
+    "vue": "^3.5.31",
+    "vue-tsc": "^3.2.6"
   },
   "files": [
     "dist"
